@@ -25,16 +25,15 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          cd src/api
           npm install
-          npm run build --if-present || true
-          npm run test --if-present || true
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: src/api
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,4 +52,4 @@ jobs:
           app-name: 'app-orderhub-api-ivan'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_390BE7B64F194BE0A6F76D1398B63618 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1EC6930D49E44B45AED24DAE898E4166 }}
