@@ -24,7 +24,7 @@ jobs:
 
       - name: npm install
         working-directory: src/api
-        run: npm install
+        run: npm install --save-dev @nestjs/cli
           
       - name: build app
         working-directory: src/api
