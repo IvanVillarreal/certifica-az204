@@ -22,6 +22,8 @@ jobs:
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
+        env:
+          VITE_API_BASE_URL: "https://app-orderhub-api-ivan-staging.azurewebsites.net"
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_MOSS_0C2D8440F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
@@ -32,8 +34,6 @@ jobs:
           api_location: "https://app-orderhub-api-ivan-staging.azurewebsites.net" # Api source code path - optional
           output_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-        env:
-          VITE_API_BASE_URL: "https://app-orderhub-api-ivan-staging.azurewebsites.net"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
