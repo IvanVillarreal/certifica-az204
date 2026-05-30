@@ -21,10 +21,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Build project
-        run: npm run build
-
+      - name: Install dependencies
+        run: |
+          cd src/ui
+          npm ci
+      - name: Build project 
+        run: |
+           cd src/ui
+           npm run build
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         env:
