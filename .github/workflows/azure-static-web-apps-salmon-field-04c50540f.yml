@@ -37,4 +37,4 @@ jobs:
           action: "upload"
           app_location: "src/ui"          # carpeta del frontend
           api_location: "src/api"           # carpeta del backend
-          output_location: "src/ui/dist"  # carpeta de salida del build
+          output_location: "dist"  # carpeta de salida del build
