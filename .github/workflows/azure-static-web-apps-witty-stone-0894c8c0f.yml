@@ -24,6 +24,15 @@ jobs:
           lfs: false
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
+
+      - name: Instalar dependencias backend
+        run: npm install
+        working-directory: src/api
+
+      - name: Compilar backend con TypeScript
+        run: npx tsc
+        working-directory: src/api
+        
       - name: Usar Node 20
         uses: actions/setup-node@v4
         with:
