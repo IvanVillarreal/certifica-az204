@@ -28,13 +28,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Instalar dependencias Vite
-        run:  npm install -g vite
-        working-directory: src/ui
-      - name: Compilar frontend con Vite
-        run: npx vite build
-        working-directory: src/ui
-        
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
