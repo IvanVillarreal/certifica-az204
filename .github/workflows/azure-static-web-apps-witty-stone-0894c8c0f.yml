@@ -24,13 +24,17 @@ jobs:
           lfs: false
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
-
+      - name: Usar Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Instalar dependencias Vite
         run:  npm install -g vite
         working-directory: src/ui
       - name: Compilar frontend con Vite
         run: npx vite build
         working-directory: src/ui
+        
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
