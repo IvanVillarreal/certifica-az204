@@ -13,12 +13,29 @@ const app_service_1 = require("./app.service");
 const orders_module_1 = require("./orders/orders.module");
 const health_module_1 = require("./health/health.module");
 const files_module_1 = require("./files/files.module");
+const config_1 = require("@nestjs/config");
+const typeorm_1 = require("@nestjs/typeorm");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [orders_module_1.OrdersModule, health_module_1.HealthModule, files_module_1.FilesModule],
+        imports: [
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            orders_module_1.OrdersModule,
+            health_module_1.HealthModule,
+            files_module_1.FilesModule,
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                host: process.env.DB_HOST,
+                port: Number(process.env.DB_PORT),
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+                autoLoadEntities: true,
+                synchronize: true,
+            }),
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

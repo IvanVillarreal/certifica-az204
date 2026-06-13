@@ -1,11 +1,8 @@
-export interface Order {
-    id: string;
-    customerId: string;
-    total: number;
-    status: string;
-}
+import { Order } from './entities/order.entities';
+import { Repository } from 'typeorm';
 export declare class OrdersService {
-    private readonly orders;
-    findAll(): Order[];
-    create(order: Omit<Order, 'id'>): Order;
+    private readonly orderRepository;
+    constructor(orderRepository: Repository<Order>);
+    findAll(): Promise<Order[]>;
+    create(order: Omit<Order, 'id'>): Promise<Order>;
 }

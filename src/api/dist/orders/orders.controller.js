@@ -20,10 +20,10 @@ let OrdersController = class OrdersController {
     constructor(ordersService) {
         this.ordersService = ordersService;
     }
-    getOrders() {
+    async getOrders() {
         return this.ordersService.findAll();
     }
-    createOrder(body) {
+    async createOrder(body) {
         return this.ordersService.create(body);
     }
 };
@@ -32,14 +32,14 @@ __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], OrdersController.prototype, "getOrders", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], OrdersController.prototype, "createOrder", null);
 exports.OrdersController = OrdersController = __decorate([
     (0, common_1.Controller)('orders'),
